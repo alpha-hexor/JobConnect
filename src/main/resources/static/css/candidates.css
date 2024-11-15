@@ -1,0 +1,551 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+#jobModal {
+    display: none; 
+}
+body {
+	background-color: rgb(199, 200, 201);
+	/* Set your desired background color */
+	box-sizing: border-box;
+}
+
+.add-class {
+	border: 2px solid white; /* Border color */
+	color: white; /* Text color */
+	background-color: transparent; /* Make background transparent */
+}
+
+/* candidate profile icon */
+.candidate-profile-icon {
+	position: absolute;
+	top: 80px;
+	right: 40px;
+	z-index: 1000;
+	font-size: 2rem; /* Adjust the icon size if needed */
+	color: #e97312;
+	cursor: pointer;
+}
+
+/* Tooltip for "Candidate Profile" text on hover */
+.candidate-profile-icon:hover::after {
+	content: 'Candidate Profile';
+	position: absolute;
+	top: 50px;
+	right: 0;
+	background-color: #17a2b8;
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	white-space: nowrap;
+	font-size: 0.9rem;
+}
+
+#jobconnect {
+	color: rgb(119, 129, 27);
+	border: 2px solid rgb(230, 230, 230);
+	border-radius: 10px;
+	padding: 0 18px;
+	background-color: rgb(0, 0, 0);
+	font-size: large;
+}
+
+h1 {
+	font-size: 2.5rem; /* Adjust size as needed */
+	color: #343a40; /* Dark text color */
+	margin-bottom: 20px; /* Space below the heading */
+	text-align: center;
+	color: rgb(119, 129, 27);
+}
+
+p {
+	font-size: 1.2rem; /* Adjust size as needed */
+	color: #6c757d; /* Light gray text color */
+	text-align: center;
+	color: black;
+}
+
+.search-section {
+	margin-top: 200px;
+}
+
+.search-section h2 {
+	font-size: 1.8rem;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.form-inline {
+	display: flex;
+	gap: 15px;
+}
+
+.form-control {
+	width: 250px; /* Adjust width as needed */
+}
+
+.job-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+.job-card {
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 30%;
+	margin: 15px;
+	padding: 20px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	position: relative;
+}
+
+.job-card:hover {
+	transform: scale(1.05);
+}
+
+.job-card img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 15px;
+}
+
+.job-header {
+	display: flex;
+	align-items: center;
+}
+
+.company-name {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.job-role {
+	font-size: 0.9em;
+	color: #777;
+}
+
+/* Modal Styles */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	overflow-y: auto; /* Enable vertical scrolling if content overflows */
+
+}
+/* Modal Styles */
+.modal {
+	display: flex; /* Use flex to center modal */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	overflow-y: auto; /* Enable vertical scrolling for the whole modal if necessary */
+}
+
+/* Modal Content */
+.modal-content {
+	background: linear-gradient(to bottom, #f9f9f9, #fff); /* Subtle gradient */
+	padding: 0; /* No padding on the content to allow for header spacing */
+	width: 50%;
+	max-width: 600px;
+	max-height: 80vh; /* Limit the height of the modal content to 80% of the viewport */
+	position: relative;
+	animation: modalOpen 0.4s ease;
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Elegant shadow */
+	border: 1px solid #ddd; /* Subtle border */
+	display: flex;
+	flex-direction: column; /* Stack header and body vertically */
+}
+
+/* Modal Header */
+.modal-header {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #eaeaea; /* Subtle line under the header */
+	padding: 15px 30px; /* Padding for the header */
+	background: #f9f9f9; /* Background for header */
+}
+
+/* Logo Styles */
+.modal-header img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow around logo */
+	object-fit: cover;
+}
+
+/* Header Text */
+.modal-header div {
+	margin-left: 20px;
+}
+
+.modal-header h2 {
+	margin: 0;
+	font-size: 1.8em;
+	font-weight: 600;
+	color: #333;
+	letter-spacing: 0.5px;
+}
+
+/* Modal Body */
+.modal-body {
+	text-align: left;
+	font-size: 1.1em;
+	line-height: 1.6;
+	color: #444;
+	overflow-y: auto; /* Enable vertical scrolling for modal body */
+	padding: 30px; /* Padding for the body */
+	flex: 1; /* Allow body to take up remaining space */
+}
+
+/* Paragraph Styling in Modal Body */
+.modal-body p {
+	margin: 10px 0;
+	text-align: left;
+}
+
+
+/* Modal Open Animation */
+@keyframes modalOpen {
+	from {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Apply Button */
+.apply-btn {
+	background-color: #007bff; /* Cool blue color */
+	color: white;
+	border: none;
+	padding: 12px 25px;
+	cursor: pointer;
+	border-radius: 30px; /* Rounded button */
+	font-size: 1.1em;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); /* Button shadow */
+}
+
+.apply-btn:hover {
+	background-color: #0056b3;
+	transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Footer Styles */
+.modal-footer {
+	margin-top: 30px;
+	text-align: right;
+}
+
+/* Close Button */
+.close-modal {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 1.8em;
+	color: #555;
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.close-modal:hover {
+	color: red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.modal-content {
+		width: 85%; /* Make modal responsive for smaller screens */
+		max-height: 90vh; /* Adjust max-height for smaller screens */
+	}
+	.modal-header h2 {
+		font-size: 1.5em; /* Smaller font size for mobile */
+	}
+	.apply-btn {
+		padding: 10px 20px; /* Adjust button padding on smaller screens */
+	}
+}
+
+/* Search container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(199, 200, 201);
+    border-radius: 10px;
+
+}
+
+/* Search input */
+.search-container input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-container input[type="text"]:focus {
+    border-color: #0056b3;
+}
+
+/* Search button */
+.search-container button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-container input[type="text"] {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .search-container button {
+        width: 100%;
+    }
+}
+
+
+/* apply button*/
+
+/* Basic Apply Button Style */
+.apply-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.apply-btn:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Clicked (Applied) Button Style */
+.apply-btn:active, .applied-btn {
+    background-color: #888888; /* Gray to show it's applied */
+    color: white;
+    cursor: not-allowed;
+    font-weight: bold;
+    transform: scale(1.05); /* Slight size increase on click */
+    box-shadow: none;
+}
+
+/* Success Animation */
+.applied-btn {
+    position: relative;
+    background-color: #888888; /* Gray */
+    overflow: hidden;
+}
+
+.applied-btn::after {
+    content: "✓ Applied";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.3s ease;
+}
+
+.apply-btn:active::after, .applied-btn::after {
+    opacity: 1;
+    transform: scale(1); /* Smoothly bring "✓ Applied" text in */
+}
+
+
+/* General Dashboard Container Styles */
+.dashboard-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Alert styles */
+.alert {
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    display: flex; /* Keep it flex for the icon and close button */
+    justify-content: space-between; /* Space between text and close button */
+    align-items: center; /* Center text vertically */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: fixed; /* Fixed position to stay on top */
+    top: 60px; /* Adjust this based on your navbar height */
+    left: 33%; /* Center horizontally */
+    transform: translate(-50%, 0); /* Adjust for centering */
+    animation: fadeIn 0.5s ease-in-out forwards; /* Animation */
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Maximum width */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Success alert */
+.alert-success {
+    background: linear-gradient(135deg, #28a745 0%, #2ecc71 100%);
+}
+
+/* Error (Danger) alert */
+.alert-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+}
+
+/* Close button */
+.alert .close {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(253, 250, 250);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.alert .close:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Icon and text container */
+.alert .content {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the icon and the message text */
+    flex-grow: 1; /* Allows text to grow and push the close button to the right */
+}
+
+/* Icon inside the alert */
+.alert .icon {
+    font-size: 25px;
+    animation: bounce 0.5s infinite; /* Bounce effect */
+}
+
+/* Success icon */
+.alert-success .icon {
+    color: #ffffff;
+}
+
+/* Error icon */
+.alert-danger .icon {
+    color: #ffffff;
+}
+
+/* Alert slide-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px); /* Slide in from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+/* Bounce animation for icons */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}

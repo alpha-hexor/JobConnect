@@ -1,0 +1,147 @@
+.btn-outline-success:hover {
+    background-color: white;
+    color: green;
+  }
+  .job-seeker-image {
+    width: 300px; 
+    height: 200px; 
+}
+.large-image {
+    width: 600px; 
+    height: 300px; 
+}
+.custom-jumbotron {
+    padding: 30px; /* Adjust padding as needed */
+}
+
+.custom-jumbotron img {
+    width: 50%; /* Set image width relative to the parent */
+    height: 70%; /* Keep the aspect ratio */
+}
+.footer {
+    margin-top: 200px;
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+body{
+    background-color: rgb(199, 200, 201);
+}
+#jobconnect{
+    color: rgb(119, 129, 27);
+    border: 2px solid rgb(230, 230, 230);
+    border-radius: 10px;
+    padding: 0 18px;
+    background-color: rgb(0, 0, 0);
+    font-size: large; 
+}
+
+    /* Alert styles */
+/* Alert styles */
+.alert {
+	display:none;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Ensures space between text and close button */
+    align-items: center; /* Centers text vertically */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+   
+}
+
+
+
+/* Success alert */
+.alert-success {
+    background: linear-gradient(135deg, #28a745 0%, #2ecc71 100%);
+}
+
+/* Error (Danger) alert */
+.alert-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+}
+
+/* Close button */
+.alert .close {
+   
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(253, 250, 250);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.alert .close:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Icon and text container */
+.alert .content {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the icon and the message text */
+    flex-grow: 1; /* Allows text to grow and push the close button to the right */
+}
+
+/* Icon inside the alert */
+.alert .icon {
+    font-size: 25px;
+    animation: bounce 0.5s infinite;
+}
+
+/* Success icon */
+.alert-success .icon {
+    color: #ffffff;
+}
+
+/* Error icon */
+.alert-danger .icon {
+    color: #ffffff;
+}
+
+
+
+
+/* Alert slide-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bounce animation for icons */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+ 
+
+

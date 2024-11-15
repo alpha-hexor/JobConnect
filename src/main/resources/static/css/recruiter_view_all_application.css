@@ -1,0 +1,109 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f9f9f9;
+	margin: 0;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 auto;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+	background-color: #007bff;
+	color: white;
+}
+
+th, td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+	background-color: #f1f1f1;
+}
+
+th {
+	font-weight: bold;
+}
+
+.action-buttons {
+	display: flex;
+	gap: 10px; /* Space between action buttons */
+}
+
+.btn {
+	padding: 8px 12px;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.btn-delete {
+	background-color: #dc3545; /* Red color for delete button */
+}
+
+.btn-delete:hover {
+	background-color: #c82333; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media ( max-width : 768px) {
+	th, td {
+		padding: 10px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+}
+/* Styles for the form container */
+form {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+/* Styling for the select dropdown */
+form select {
+	padding: 5px 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #a592d3;
+	color: #fff;
+	cursor: pointer;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styling for options in the dropdown */
+
+/* Hover and focus effect for the select dropdown */
+form select:hover, form select:focus {
+	border-color: #4CAF50;
+	box-shadow: 0px 0px 5px rgba(76, 175, 80, 0.5);
+	background-color: #51da2f;
+}
+
+form select option {
+	padding: 8px;
+	font-size: 14px;
+	background-color: #593d5c;
+}
+
+/* Styling for the form submit on change */
+form select:active {
+	background-color: #e8f5e9;
+	border-color: #4CAF50;
+}

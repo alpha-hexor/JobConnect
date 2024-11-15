@@ -1,0 +1,214 @@
+ /* CSS for overall styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+
+        /* Header styling */
+        h1 {
+            color: #4CAF50;
+            margin: 20px 0;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        /* Container for table */
+        .job-table-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        /* Styling for table */
+        .job-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .job-table th, .job-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Header styling within the table */
+        .job-table th {
+            background-color: #4CAF50;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Image styling */
+        .logo-img {
+            width: 50px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Columns for text */
+        .job-table td.skills-col,
+        .job-table td.description-col {
+            max-width: 200px;
+            white-space: pre-line;
+            word-wrap: break-word;
+        }
+
+        /* Action button styling */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-update {
+            background-color: #4CAF50;
+        }
+
+        .btn-update:hover {
+            background-color: #3e8e41;
+        }
+
+        .btn-delete {
+            background-color: #f44336;
+        }
+
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Message styling */
+        .no-jobs-message {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .job-table-container {
+                padding: 10px;
+            }
+            .job-table th, .job-table td {
+                padding: 8px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+        
+ /* Modal Overlay */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+}
+
+/* Modal Content Box */
+.modal-content {
+    background-color: #fff; /* Light background for contrast */
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    max-height: 80vh; /* Limit height to allow for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: relative;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    color: #333; /* Dark text color */
+}
+
+/* Close Button */
+.close {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Form Styling */
+.modal-content label {
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+    display: block;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Make the modal content box more vibrant */
+.modal-content h2 {
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+       
