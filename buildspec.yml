@@ -9,7 +9,7 @@ phases:
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 581921480440.dkr.ecr.ap-south-1.amazonaws.com
       - REPOSITORY_URI=581921480440.dkr.ecr.ap-south-1.amazonaws.com/staging/backend
       - IMAGE_TAG=${CODEBUILD_RESOLVED_SOURCE_VERSION:-latest}
-      - CONTAINER_NAME=staging-backend
+      - CONTAINER_NAME=backend
   build:
     commands:
       - echo Build started on date
