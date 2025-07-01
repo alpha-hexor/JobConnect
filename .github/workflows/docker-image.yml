@@ -10,18 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
     - name: Login to aws ecr
       uses: aws-actions/amazon-ecr-login@v2
 
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Build docker image
+    - name: Build, Tag, and Push the Image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: staging/backend
+        IMAGE_TAG: latest-arm
       run: |
-        docker build -t staging/backend .
-
-    - name: Tag docker image
-      run: |
-        REPO_URI="${{ steps.login-ecr.outputs.registry }}/staging/backend"
-        docker tag staging/backend:latest $REPO_URI:latest
-        docker push $REPO_URI:latest
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
