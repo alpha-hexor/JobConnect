@@ -3,9 +3,6 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
 jobs:
 
   build:
@@ -13,6 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Login to aws ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build docker image
+      run: |
+        docker build -t staging/backend .
+
+    - name: Tag docker image
+      run: |
+        REPO_URI="${{ steps.login-ecr.outputs.registry }}/staging/backend"
+        docker tag staging/backend:latest $REPO_URI:latest
+        docker push $REPO_URI:latest
