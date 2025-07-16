@@ -6,4 +6,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["mvn","-x","spring-boot:run"]
+CMD ["mvn","-X","spring-boot:run"]
